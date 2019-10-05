@@ -13,8 +13,29 @@ module.exports = function(app) {
   // // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
   // // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // // otherwise send back an error
-  app.post("/api/parts", function(req, res) {
-    db.Parts.create(req.body)
+
+  //FIXME: doesn't take in req.body (Trae fixed this by changing req.body to actual object after line 19)
+  app.post("/api/addParts", function(req, res) {
+    db.Parts.create({
+      partName: req.body.partName,
+      department: req.body.department,
+      partCondition: req.body.partCondition,
+      price: req.body.price
+    })
+      .then(function(data) {
+        console.log(data)
+        res.json(data)
+        
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  });app.post("/api/addUser", function(req, res) {
+    db.User.create({
+      email: req.body.email,
+      password: req.body.password,
+      
+    })
       .then(function(data) {
         console.log(data)
         res.json(data)
@@ -24,6 +45,11 @@ module.exports = function(app) {
         console.log(err);
       });
   });
+
+
+
+
+  //this one works
   app.get("/api/parts", function(req, res) {
     db.Parts.findAll({})
       .then(function(data) {
@@ -61,7 +87,7 @@ module.exports = function(app) {
   //route for getting parts from parts table
 
 
-
+// this one works
 app.get("/api/parts/:id", function(req, res) {
   // Here we add an "include" property to our options in our findOne query
   // We set the value to an array of the models we want to include in a left outer join
@@ -91,4 +117,4 @@ app.get("/api/user/:id", function(req, res) {
   });
 });
 
-};
+}
