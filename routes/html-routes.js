@@ -1,36 +1,3 @@
-<<<<<<< HEAD
-// // Requiring path to so we can use relative routes to our HTML files
-// var path = require("path");
-
-// // Requiring our custom middleware for checking if a user is logged in
-// var isAuthenticated = require("../config/middleware/isAuthenticated");
-
-// module.exports = function(app) {
-
-//   app.get("/", function(req, res) {
-//     // If the user already has an account send them to the members page
-//     if (req.user) {
-//       res.redirect("/members");
-//     }
-//     res.sendFile(path.join(__dirname, "../public/signup.html"));
-//   });
-
-//   app.get("/login", function(req, res) {
-//     // If the user already has an account send them to the members page
-//     if (req.user) {
-//       res.redirect("/members");
-//     }
-//     res.sendFile(path.join(__dirname, "../public/login.html"));
-//   });
-
-//   // Here we've add our isAuthenticated middleware to this route.
-//   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-//   app.get("/members", isAuthenticated, function(req, res) {
-//     res.sendFile(path.join(__dirname, "../public/members.html"));
-//   });
-
-// };
-=======
 // Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
 
@@ -38,11 +5,11 @@ var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-
-  app.get("/", function(req, res) {
+//middleware
+  app.get("/", isAuthenticated,function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/members");
+      /* res.redirect("/members"); */
     }
     res.sendFile(path.join(__dirname, "../public/signup.html"));
   });
@@ -54,7 +21,13 @@ module.exports = function(app) {
     }
     res.sendFile(path.join(__dirname, "../public/login.html"));
   });
-
+  app.get("/signup", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/members");
+    }
+    res.sendFile(path.join(__dirname, "../public/signup.html"));
+  });
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
@@ -62,4 +35,3 @@ module.exports = function(app) {
   });
 
 };
->>>>>>> 31589e8a87a78bab659fb576e6afcd86e4973317

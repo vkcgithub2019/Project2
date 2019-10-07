@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS classicPart;
+/* DROP DATABASE IF EXISTS classicPart;
 
 CREATE DATABASE classicPart;
-USE classicPart;
+USE classicPart; */
 
 -- CREATE TABLE Parts (
 --   id INT NOT NULL AUTO_INCREMENT,
@@ -12,7 +12,7 @@ USE classicPart;
 --   PRIMARY KEY (id)
 -- );
 
-CREATE DATABASE userId;
+/* CREATE DATABASE userId;
 USE userId;
 
 CREATE TABLE Users (
@@ -21,4 +21,4 @@ CREATE TABLE Users (
   Email VARCHAR(100) NOT NULL,
   password VARCHAR(150),
   PRIMARY KEY(id)
-);
+); */

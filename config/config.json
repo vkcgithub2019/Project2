@@ -1,35 +1,22 @@
 {
   "development": {
     "username": "root",
-<<<<<<< HEAD
     "password": "",
     "database": "classicPart",
-=======
-    "password": null,
-    "database": "classicParts_db",
->>>>>>> 31589e8a87a78bab659fb576e6afcd86e4973317
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
     "password": null,
-<<<<<<< HEAD
     "database": "classicParts",
-=======
-    "database": "database_test",
->>>>>>> 31589e8a87a78bab659fb576e6afcd86e4973317
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
     "password": null,
-<<<<<<< HEAD
     "database": "classicParts",
-=======
-    "database": "database_production",
->>>>>>> 31589e8a87a78bab659fb576e6afcd86e4973317
     "host": "127.0.0.1",
     "dialect": "mysql"
   }

@@ -2,7 +2,7 @@
 var db = require("../models");
 var passport = require("../config/passport");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -15,49 +15,69 @@ module.exports = function(app) {
   // // otherwise send back an error
 
   //FIXME: doesn't take in req.body (Trae fixed this by changing req.body to actual object after line 19)
-  app.post("/api/addParts", function(req, res) {
+  app.post("/api/addParts", function (req, res) {
     db.Parts.create({
       partName: req.body.partName,
       department: req.body.department,
       partCondition: req.body.partCondition,
       price: req.body.price
     })
-      .then(function(data) {
+      .then(function (data) {
         console.log(data)
         res.json(data)
-        
+
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
       });
-  });app.post("/api/addUser", function(req, res) {
+  }); app.post("/api/addUser", function (req, res) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,
-      
+
     })
-      .then(function(data) {
+      .then(function (data) {
         console.log(data)
         res.json(data)
-        
+
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
       });
   });
 
+  app.post("/api/login", function (req, res) {
+    db.User.findOne({where:{
+      email: req.body.email,
+      password: req.body.password,
+    }
+    })
+      .then(function (user) {
+        if (user) {
+          req.login(user, function (err) {
+            if (err) { return next(err); }
+            return res.redirect('/users/' + req.user.username);
+          });
+        }
 
+        console.log(user)
+        res.json(user)
 
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  })
 
   //this one works
-  app.get("/api/parts", function(req, res) {
+  app.get("/api/parts", function (req, res) {
     db.Parts.findAll({})
-      .then(function(data) {
+      .then(function (data) {
         console.log(data)
         res.json(data)
-        
+
       })
-      .catch(function(err) {
+      .catch(function (err) {
         console.log(err);
       });
   });
@@ -87,34 +107,34 @@ module.exports = function(app) {
   //route for getting parts from parts table
 
 
-// this one works
-app.get("/api/parts/:id", function(req, res) {
-  // Here we add an "include" property to our options in our findOne query
-  // We set the value to an array of the models we want to include in a left outer join
-  // In this case, just db.Post
-  db.Parts.findOne({
-    where: {
-      id: req.params.id
-    },
-    /* include: [db.Post] */
-  }).then(function(dbAuthor) {
-    res.json(dbAuthor);
+  // this one works
+  app.get("/api/parts/:id", function (req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.Parts.findOne({
+      where: {
+        id: req.params.id
+      },
+      /* include: [db.Post] */
+    }).then(function (dbAuthor) {
+      res.json(dbAuthor);
+    });
   });
-});
 
 
-app.get("/api/user/:id", function(req, res) {
-  // Here we add an "include" property to our options in our findOne query
-  // We set the value to an array of the models we want to include in a left outer join
-  // In this case, just db.Post
-  db.user.findOne({
-    where: {
-      id: req.params.id
-    },
-    include: [db.Parts]
-  }).then(function(dbUser) {
-    res.json(dbUser);
+  app.get("/api/user/:id", function (req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.user.findOne({
+      where: {
+        id: req.params.id
+      },
+      include: [db.Parts]
+    }).then(function (dbUser) {
+      res.json(dbUser);
+    });
   });
-});
-
 }
+
