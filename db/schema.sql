@@ -1,3 +1,11 @@
+DROP DATABASE IF EXISTS "sequelize_classicPart";
+CREATE DATABASE "sequelize_classicPart";
+
+
+
+
+
+
 /* DROP DATABASE IF EXISTS classicPart;
 
 CREATE DATABASE classicPart;

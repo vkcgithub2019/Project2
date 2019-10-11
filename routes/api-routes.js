@@ -1,6 +1,8 @@
 // Requiring our models and passport as we've configured it
+var sequelize = require("sequelize");
 var db = require("../models");
 var passport = require("../config/passport");
+var Op = sequelize.Op;
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -45,6 +47,16 @@ module.exports = function (app) {
         console.log(err);
       });
   });
+
+  app.get("/api/searchAllParts/:term", (req, res) => {
+    db.Parts.findAll({
+        // order: [['jobNumber', 'ASC']],
+        where: { partName: { [Op.like]: "%" + req.params.term + "%" }}
+        
+    }).then(data => {
+        res.json(data);
+    }) 
+})
 
   app.post("/api/login", function (req, res) {
     db.User.findOne({where:{

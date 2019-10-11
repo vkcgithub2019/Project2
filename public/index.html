@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>project 2 | VDub  Barn | <img src="assets/images/VW bus2.jpg" class="my-picture" alt="picture of VW bus"></title>
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link rel="stylesheet" S href="Links.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+
+  <header id="masthead">
+    <div class="container">
+      <!-- <a href="index.html" id="logo">VDub Parts Barn</a> -->
+      <!-- <img src="assets/images/movie-reel.jpg" alt="Project1.jpg"> -->
+      <img src="assets/images/VW bus2.jpg" class="my-picture" alt="picture of VW bus">
+      <nav>
+        <a href="index.html">About</a>
+        <a href="Sell.html">Sell</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="signup.html">Join</a>
+        <a href="Login.html">Login</a>
+        <a href="Events.html">Events</a>
+        <a href="Gallery.html">Gallery</a>
+        <a href="Links.html">Links</a>
+
+      </nav>
+    </div>
+  </header>
+<!--Search form -->
+  <!-- Start of container -->
+  <main class="container">
+    <section class="row">
+      <div class="col-md-12">
+        <form class="block form-horizontal">
+          <h1 class="block-header">Search</h1>
+         
+ 
+          <div class="form-group">
+            <!-- <label for="name" class="col-sm-2 control-label">Name</label> -->
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="search-term" placeholder="Search with item name">
+            </div>
+          </div>
+
+          <button class="submit-btn btn btn-outline-primary">Submit</button>
+
+        </form>
+      </div>
+    </section>
+  </main>
+  <!-- End of container -->
+
+  <div id="main-container" class="container">
+    <section class="main-section">
+      <h1>VW Parts Barn | Your hard-to-find-parts buddy <img src="assets/images/VW bus4.jpg" class="my-picture" alt="picture of VW bus"> </h1>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      <!-- <div class="work">
+         <a href= "Details.html">
+        <img src="assets/images/guess-what.jpg" alt="picture 1"></a>
+
+        <h3>steering wheel</h3>
+      </div>
+     
+
+    <footer> 
+      <div class="container">
+        &copy; Copyright 2019 Victor Chung
+      </div>
+    </footer>
+
+    
+    <!-- link js file here -->
+
+
+<!-- Modal after completing the search field on the homeindex page-->
+<div class="modal fade" id="best-match-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+              <h5 class="modal-title" id="myModalLabel">Your search result...</h5>
+          </div>
+          <div class="modal-body">
+              <div class="text-center" id="bestMatch-name"></div>
+              <div class="text-center" id="bestMatch-photo" width: 150px; height:150px;></div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+<script type="text/javascript">
+$(function() {
+  $("#name").focus();
+});
+
+$("#submit").on("click", function(e) {
+  e.preventDefault();
+
+  function formValidation() {
+      var validForm = true;
+      $(".form-control").each(function() {
+          if ($(this).val() === "") {
+              validForm = false;
+          }
+      });
+
+      $(".q").each(function() {
+          if ($(this).val() === null) {
+              validForm = false;
+          }
+           console.log($(this).val());
+      });
+
+      if ($("#q1").val() === "" || $("#q2").val() === "" || $("#q3").val() === "" || $("#q4").val() === "" || $("#q5").val() === "" || $("#q6").val() === "" || $("#q7").val() === "" || $("#q8").val() === "" || $("#q9").val() === "" || $("#q10").val() === "") {
+          validForm = false;
+      }
+      return validForm;
+  }
+
+  if (formValidation() == true) {
+
+      var newUser = {
+          name: $("#name").val().trim(),
+          photo: $("#photo").val().trim(),
+          scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
+      }
+
+      var currentURL = window.location.origin;
+
+  //AJAX post the data to the friends route
+      $.post(currentURL + "/api/friends", newUser).done(function(bestMatch) {
+          console.log(bestMatch);
+          $("#bestMatch-name").html("<h2 style='font-size: 4em;'>" + bestMatch.name + "</h2>");
+          $("#bestMatch-photo").html("<img src='" + bestMatch.photo + "' alt='best match photo'>");
+  //bring up the modal
+          $("#best-match-modal").modal("toggle")
+      });
+      //empty all fields after user submitted to get ready for next user
+      $("#name").val("");
+      $("#photo").val("");
+      $(".q").val("");
+      $("#name").focus();
+  } else {
+      alert("Please go back and check that all fields are completed");
+      /* return false; */
+  }
+  /* return false; */
+});
+</script>
+</body>
+
+</html>
+
+</body>
+
+</html>
