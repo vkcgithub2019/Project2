@@ -24,8 +24,6 @@ app.get("/sellerInfo", isAuthenticated,function(req, res) {
 });
 
 
-
-
   // app.get("/", isAuthenticated,function(req, res) {
   //   // If the user already has an account send them to the members page
   //   if (req.user) {
@@ -52,6 +50,11 @@ app.get("/sellerInfo", isAuthenticated,function(req, res) {
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
+  });
+
+  app.get("/sell",function(req, res) {
+ 
+    res.sendFile(path.join(__dirname, "../public/sell.html"));
   });
 
 };
