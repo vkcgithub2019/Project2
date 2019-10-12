@@ -20,8 +20,5 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "sequelize": "^5.19.2"
-  },
-  "scripts":{
-    "start": "node server.js"
   }
 }
