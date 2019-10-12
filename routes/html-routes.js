@@ -57,4 +57,36 @@ app.get("/sellerInfo", isAuthenticated,function(req, res) {
     res.sendFile(path.join(__dirname, "../public/sell.html"));
   });
 
+  app.get("/about",function(req, res) {
+ 
+    res.sendFile(path.join(__dirname, "../public/about.html"));
+  });
+
+  app.get("/contact us",function(req, res) {
+ 
+    res.sendFile(path.join(__dirname, "../public/contact.html"));
+  });
+
+  app.get("/events",function(req, res) {
+ 
+    res.sendFile(path.join(__dirname, "../public/events.html"));
+  });
+
+  app.get("/gallery",function(req, res) {
+ 
+    res.sendFile(path.join(__dirname, "../public/gallery.html"));
+  });
+
+  app.get("/links",function(req, res) {
+ 
+    res.sendFile(path.join(__dirname, "../public/links.html"));
+  });
+
+
+
+
+
+
+
+
 };
