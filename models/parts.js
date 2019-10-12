@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       partCondition: DataTypes.STRING,
       price: DataTypes.INTEGER,  
       description: DataTypes.STRING,
-      phone: DataTypes.INTEGER  
+      phone: DataTypes.STRING  
     });
     
     // when a user is deleted, also delete any associated parts

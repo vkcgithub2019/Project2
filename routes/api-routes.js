@@ -23,8 +23,8 @@ module.exports = function (app) {
       department: req.body.department,
       partCondition: req.body.partCondition,
       price: req.body.price,
-      description: DataTypes.STRING,
-      phone: DataTypes.INTEGER  
+      description: req.body.description,
+      phone: req.body.phone  
     })
       .then(function (data) {
         console.log(data)
@@ -33,6 +33,7 @@ module.exports = function (app) {
       })
       .catch(function (err) {
         console.log(err);
+        res.send(err)
       });
   }); app.post("/api/addUser", function (req, res) {
     db.User.create({
