@@ -3,7 +3,7 @@ body {
     font-size: 18px;
     line-height: 34px;
     color: rgb(21, 123, 170);
-    background-image: url("../images/oldVWemblem.png");
+    /* background: url("../images/oldVWemblem.png"); */
   }
   
   * {

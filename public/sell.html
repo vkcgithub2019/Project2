@@ -30,17 +30,17 @@
       <form id="contact-form">
         <ul>
           <li>
-            <label for="name">Seller's Name</label>
-            <input type="text" id="name" name="name" placeholder="John Smith" required="required">
+            <label for="seller name">Seller's Name</label>
+            <input type="text" id="sellerName" name="sellerName" placeholder="John Smith" required="required">
           </li>
           <li>
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="example@gmail.com" required="required">
+            <input type="email" id="sellerEmail" name="sellerEmail" placeholder="example@gmail.com" required="required">
           </li>
 
           <li>
             <label for="phone">Phone</label>
-            <input type="number" id="phone" name="phone" placeholder="(800) 000-0000" required="required">
+            <input type="tel" id="sellerPhone" name="sellerPhone" placeholder="(800) 000-0000" required="required">
           </li>
 
 
@@ -58,9 +58,28 @@
       <form id="contact-form">
         <ul>
           <li>
-            <label for="name">Kind of part</label>
+            <label for="part-name">Kind of part</label>
             <input type="text" id="partName" name="name" placeholder="starter" required="required">
           </li>
+
+          <li>
+            <label for="department">Department</label>
+            <input type="text" name="department" list="department">
+
+              <datalist id="department">
+                <option value="Electrical">
+                <option value="Body">
+                <option value="transmission">
+                <option value="Engine">
+              </datalist>
+          </li>
+
+          <li>
+            <label for="part-condition">partCondition</label>
+            <input type="text" id="partCondition" name="name" placeholder="used" required="required">
+          </li>
+
+
           <li>
             <label for="price">Price</label>
             <input type="currency" id="price" name="price" placeholder="$100.00" required="required">

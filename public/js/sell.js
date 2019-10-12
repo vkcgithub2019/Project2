@@ -6,23 +6,31 @@ function submitForm(){
     event.preventDefault()
     /* console.log ("submit form triggered") */
 
-    var name = $("#name").val();
-    var email = $("#email").val();
-    var phone = $("#phone").val();
-    var partName = $("#partName").val();
-    var price = $("#price").val();
-    var description = $("#description").val();
-    console.log(name)
-    console.log(email)
-    console.log(phone)
-    console.log(partName)
-    console.log(price)
-    console.log(description)
+    var submitFormData = {
+        sellerName: $("#sellerName").val(),
+        sellerEmail: $("#sellerEmail").val(),
+        sellerPhone: $("#sellerPhone").val(),
+        partName: $("#partName").val(),
+        department: $("#department").val,
+        partCondition: $("#partCondition").val,
+        price: $("#price").val(),
+        description: $("#description").text()
+    }
+   
+    console.log('submitFormData', submitFormData)
 
 //do an ajax call here in (), .get
-    $.ajax()
+$.ajax({
+    method: "POST",
+    url: "/api/addParts",
+    data: submitFormData
+  })
+    .then(function(addPartsDataReponse) {
+      console.log('addPartsDataReponse', addPartsDataReponse)
+    });
 
-//AJAX post the data to the html route
+
+/* //AJAX post the data to the html route
 $.post(currentURL + "/api/sell", newUser).done(function(searchResult) {
     console.log(searchResult);
     $("#partName").html("<h2 style='font-size: 4em;'>" + partName + "</h2>");
@@ -38,7 +46,9 @@ $("#partName").focus();
 $("#price").val("");
 $("#description").val("");
 
-} else {
+} else 
+
+{
 alert("Please go back and check that all fields are completed");
 /* return false; */
 }
@@ -47,7 +57,7 @@ alert("Please go back and check that all fields are completed");
 
 
 
-
+ 
 
 
 

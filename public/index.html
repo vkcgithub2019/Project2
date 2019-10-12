@@ -17,7 +17,7 @@
       <!-- <img src="assets/images/movie-reel.jpg" alt="Project1.jpg"> -->
       <img src="assets/images/VW bus2.jpg" class="my-picture" alt="picture of VW bus">
       <nav>
-        <a href="index.html">About</a>
+        <a href="about.html">About</a>
         <a href="Sell.html">Sell</a>
         <a href="contact.html">Contact Us</a>
         <a href="signup.html">Join</a>
@@ -35,6 +35,9 @@
     <section class="row">
       <div class="col-md-12">
         <form class="block form-horizontal">
+          <br>
+          <br>
+          <br>
           <h1 class="block-header">Search</h1>
          
  
@@ -61,26 +64,24 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
       
-      <!-- <div class="work">
+      <div class="work">
          <a href= "Details.html">
-        <img src="assets/images/guess-what.jpg" alt="picture 1"></a>
-
+        <img src="assets/images/Steering wheel.png" alt="steering wheeel"></a>
         <h3>steering wheel</h3>
       </div>
+
+      <div class="work">
+        <a href= "Details.html">
+       <img src="assets/images/turn signal unit.png" alt="turn signal unit"></a>
+       <h3>turn signal unit</h3>
+     </div>
+
+     <div class="work">
+      <a href= "Details.html">
+     <img src="assets/images/single carburetor.png" alt="single carburetor"></a>
+     <h3>single carburetor</h3>
+   </div>
      
 
     <footer> 
@@ -90,11 +91,11 @@
     </footer>
 
     
-    <!-- link js file here -->
+     <!-- link js file here  -->
 
 
 <!-- Modal after completing the search field on the homeindex page-->
-<div class="modal fade" id="best-match-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="best-match-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
@@ -110,7 +111,7 @@
       </div>
   </div>
 </div>
-
+ -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -118,7 +119,7 @@
 
 <script type="text/javascript">
 $(function() {
-  $("#name").focus();
+  $("#partName").focus();
 });
 
 $("#submit").on("click", function(e) {
@@ -139,41 +140,41 @@ $("#submit").on("click", function(e) {
            console.log($(this).val());
       });
 
-      if ($("#q1").val() === "" || $("#q2").val() === "" || $("#q3").val() === "" || $("#q4").val() === "" || $("#q5").val() === "" || $("#q6").val() === "" || $("#q7").val() === "" || $("#q8").val() === "" || $("#q9").val() === "" || $("#q10").val() === "") {
-          validForm = false;
+      if ($("#partName").val() === "" || $("#department").val() === "" ||{
+          validForm = false});
       }
       return validForm;
   }
 
   if (formValidation() == true) {
 
-      var newUser = {
-          name: $("#name").val().trim(),
+      var newPart = {
+          partName: $("#partName").val().trim(),
           photo: $("#photo").val().trim(),
-          scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
+       
       }
 
       var currentURL = window.location.origin;
 
-  //AJAX post the data to the friends route
-      $.post(currentURL + "/api/friends", newUser).done(function(bestMatch) {
+  //AJAX post the data to the parts route
+      $.post(currentURL + "/api/parts", newPart).done(function(bestMatch) {
           console.log(bestMatch);
-          $("#bestMatch-name").html("<h2 style='font-size: 4em;'>" + bestMatch.name + "</h2>");
+          $("#bestMatch-partName").html("<h2 style='font-size: 4em;'>" + bestMatch.partName + "</h2>");
           $("#bestMatch-photo").html("<img src='" + bestMatch.photo + "' alt='best match photo'>");
   //bring up the modal
           $("#best-match-modal").modal("toggle")
       });
       //empty all fields after user submitted to get ready for next user
-      $("#name").val("");
+      $("#department").val("");
       $("#photo").val("");
-      $(".q").val("");
-      $("#name").focus();
-  } else {
+      $("#partName").focus();
+  } else 
+  {
       alert("Please go back and check that all fields are completed");
-      /* return false; */
-  }
-  /* return false; */
-});
+    
+  };
+  
+
 </script>
 </body>
 
