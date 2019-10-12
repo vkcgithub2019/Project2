@@ -3,8 +3,9 @@ module.exports = function(sequelize, DataTypes) {
       partName: DataTypes.STRING,
       department: DataTypes.STRING,
       partCondition: DataTypes.STRING,
-      price: DataTypes.INTEGER
-  
+      price: DataTypes.INTEGER,  
+      description: DataTypes.STRING,
+      phone: DataTypes.INTEGER  
     });
     
     // when a user is deleted, also delete any associated parts
