@@ -22,7 +22,9 @@ module.exports = function (app) {
       partName: req.body.partName,
       department: req.body.department,
       partCondition: req.body.partCondition,
-      price: req.body.price
+      price: req.body.price,
+      description: DataTypes.STRING,
+      phone: DataTypes.INTEGER  
     })
       .then(function (data) {
         console.log(data)
