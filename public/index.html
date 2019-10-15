@@ -61,10 +61,6 @@
     <section class="main-section">
       <h1>VW Parts Barn | Your hard-to-find-parts buddy <img src="assets/images/VW bus4.jpg" class="my-picture" alt="picture of VW bus"> </h1>
 
-
-
-
-
       
       <div class="work">
          <a href= "Details.html">
@@ -125,7 +121,7 @@ $(function() {
 
 $("#submit").on("click", function(e) {
   e.preventDefault();
-
+console.log("postingPart");
   function formValidation() {
       var validForm = true;
       $(".form-control").each(function() {
@@ -134,18 +130,15 @@ $("#submit").on("click", function(e) {
           }
       });
 
-      $(".q").each(function() {
-          if ($(this).val() === null) {
-              validForm = false;
-          }
-           console.log($(this).val());
-      });
+     
 
-      if ($("#partName").val() === "" || $("#department").val() === "" ||{
-          validForm = false});
-      }
-      return validForm;
-  }
+      if ($("#partName").val() === "" || $("#department").val() === ""){
+          validForm = false
+        };
+
+          return validForm;
+     }
+      
 
   if (formValidation() == true) {
 
@@ -169,18 +162,12 @@ $("#submit").on("click", function(e) {
       $("#department").val("");
       $("#photo").val("");
       $("#partName").focus();
-  } else 
-  {
+  } else {
       alert("Please go back and check that all fields are completed");
     
   };
   
-
+})
 </script>
 </body>
-
-</html>
-
-</body>
-
 </html>
