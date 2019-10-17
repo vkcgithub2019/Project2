@@ -24,7 +24,8 @@ module.exports = function (app) {
       partCondition: req.body.partCondition,
       price: req.body.price,
       description: req.body.description,
-      phone: req.body.phone  
+      phone: req.body.phone,  
+      photo: req.body.photo
     })
       .then(function (data) {
         console.log(data)
@@ -35,7 +36,9 @@ module.exports = function (app) {
         console.log(err);
         res.send(err)
       });
-  }); app.post("/api/addUser", function (req, res) {
+  }); 
+  
+  app.post("/api/addUser", function (req, res) {
     db.User.create({
       email: req.body.email,
       password: req.body.password,

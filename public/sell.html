@@ -62,7 +62,7 @@
             <input type="text" id="partName" name="name" placeholder="starter" required="required">
           </li>
 
-          <li>
+          <!-- <li>
             <label for="department">Department</label>
             <input type="text" name="department" list="department">
 
@@ -72,7 +72,18 @@
                 <option value="transmission">
                 <option value="Engine">
               </datalist>
-          </li>
+          </li> -->
+
+          <div class="form-group-inline col-6, col-md-5">
+            <label class="h4" for="categorySelect">department</label>
+            <select class="form-control" id="categorySelect">
+                <option>electrical</option>
+                <option>body</option>
+                <option>transmission</option>
+                <option>engine</option>
+            </select>
+        </div>
+
 
           <li>
             <label for="part-condition">partCondition</label>
@@ -86,12 +97,12 @@
           </li>
           <li>
             <label for="message">Description</label>
-            <textarea id="message" name="description" required="required"></textarea>
+            <textarea id="description" name="description" required="required"></textarea>
           </li>
 
           <li>
-            <label for="part-condition">photo</label>
-            <input type="text" id="partCondition" name="photo" placeholder="url:https://" required="required">
+            <label for="photo">photo</label>
+            <input type="text" id="photo" name="photo" placeholder="url:https://" required="required">
           </li>
 
 
