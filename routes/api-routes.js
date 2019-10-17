@@ -61,28 +61,11 @@ module.exports = function (app) {
     }) 
 })
 
-  app.post("/api/login", function (req, res) {
-    db.User.findOne({where:{
-      email: req.body.email,
-      password: req.body.password,
-    }
+  app.post("/api/login",passport.authenticate("local"), function (req, res) {
+    console.log("User exists");
+    res.json(req.body.email);
     })
-      .then(function (user) {
-        if (user) {
-          req.login(user, function (err) {
-            if (err) { return next(err); }
-            return res.redirect('/users/' + req.user.username);
-          });
-        }
-
-        console.log(user)
-        res.json(user)
-
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  })
+ 
 
   //this one works
   app.get("/api/parts", function (req, res) {
@@ -99,25 +82,25 @@ module.exports = function (app) {
 
 
   // // Route for logging user out
-  // app.get("/logout", function(req, res) {
-  //   req.logout();
-  //   res.redirect("/");
-  // });
+   app.get("/logout", function(req, res) {
+     req.logout();
+     res.redirect("/");
+   });
 
-  // // Route for getting some data about our user to be used client side
-  // app.get("/api/user_data", function(req, res) {
-  //   if (!req.user) {
-  //     // The user is not logged in, send back an empty object
-  //     res.json({});
-  //   } else {
-  //     // Otherwise send back the user's email and id
-  //     // Sending back a password, even a hashed password, isn't a good idea
-  //     res.json({
-  //       email: req.user.email,
-  //       id: req.user.id
-  //     });
-  //   }
-  // });
+  //  Route for getting some data about our user to be used client side
+   app.get("/api/user_data", function(req, res) {
+     if (!req.user) {
+   //     The user is not logged in, send back an empty object
+       res.json({});
+     } else {
+   //     Otherwise send back the user's email and id
+   //     Sending back a password, even a hashed password, isn't a good idea
+       res.json({
+         email: req.user.email,
+         id: req.user.id
+       });
+     }
+   });
 
   //route for getting parts from parts table
 

@@ -5,7 +5,9 @@ module.exports = function(sequelize, DataTypes) {
       partCondition: DataTypes.STRING,
       price: DataTypes.INTEGER,  
       description: DataTypes.STRING,
-      phone: DataTypes.STRING  
+      phone: DataTypes.STRING,  
+      photo: DataTypes.STRING
+      // TODO: Add column for picture and set it to a STRING datatype
     });
     
     // when a user is deleted, also delete any associated parts
