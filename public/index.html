@@ -8,8 +8,7 @@
   
   
   
-  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-  <link rel="stylesheet" S href="Links.html">
+  <link rel="stylesheet" type="text/css" href="/public/assets/css/style.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 </head>
@@ -75,38 +74,18 @@
  <main class="container">
   <section class="row">
     <div class="col-md-12" id="column1">
-      <article class="block">
-        <h1 class="block-header">Top 20 parts for sale</h1>
-        <hr />
+        <h1 class="block-header">Top 10 parts for sale</h1>
+        <!-- <hr /> -->
         
         <!-- Placehold for trending parts and part name -->
-        <div id="trending-placehold"></div>  
+        <div id="most-recent-ten-parts"></div>  
 
-      </article>
+        
     </div>
   </section>
 </main>
 <!-- End of container -->
       
-      <div class="work">
-         <a href= "Details.html">
-        <img src="assets/images/Steering wheel.png" alt="steering wheeel"></a>
-        <h3>steering wheel</h3>
-      </div>
-
-      <div class="work">
-        <a href= "Details.html">
-       <img src="assets/images/turn signal unit.png" alt="turn signal unit"></a>
-       <h3>turn signal unit</h3>
-     </div>
-
-     <div class="work">
-      <a href= "Details.html">
-     <img src="assets/images/single carburetor.png" alt="single carburetor"></a>
-     <h3>single carburetor</h3>
-   </div>
-     
-
     <footer> 
       <div class="container">
         &copy; Copyright 2019 Victor Chung
@@ -135,83 +114,11 @@
   </div>
 </div>
  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<script type="text/javascript">
-
-//TODO: Setup ajax call that hits the /api/parts route and render the first 6 objects(parts) to the page
-$.get("/api/parts",function(data){
-console.log(data);
-})
-
-
-$(function() {
-  $("#partName").focus();
-});
-
-$("#submit").on("click", function(e) {
-  e.preventDefault();
-console.log("getting part");
-  function formValidation() {
-      var validForm = true;
-      $(".form-control").each(function() {
-          if ($(this).val() === "") {
-              validForm = false;
-          }
-      });
-
-     
-
-      if ($("#partName").val() === "" || $("#department").val() === ""){
-          validForm = false
-        };
-
-          return validForm;
-     }
-      
-
-  if (formValidation() == true) {
-
-      var newPart = {
-          partName: $("#partName").val().trim(),
-          photo: $("#photo").val().trim()
-       
-      }
-
-      var currentURL = window.location.origin;
-
-  //AJAX post the data to the parts route
-      $.get(currentURL + "/api/parts", newPart).done(function(bestMatch) { 
-        /* $.get(currentURL + "/api/parts/" + newPart.partName).done(function(bestMatch) { */
-          console.log(bestMatch);
-          for (var i = 0; i <= bestMatch.length, i ++;){
-            var newDiv = $("<div>") 
-              newDiv.append(bestMatch.partName)
-              newDiv.append(bestMatch.partCondition)
-              $("#best-match-modal").append(newDiv)
-          }
-
-        
-          /* $("#bestMatch-partName").html("<h2 style='font-size: 4em;'>" + bestMatch.partName + "</h2>");
-          $("#bestMatch-photo").html("<img src='" + bestMatch.photo + "' alt='best match photo'>"); */
-  //bring up the modal
-          $("#best-match-modal").modal("toggle")
-      });
-      //empty all fields after user submitted to get ready for next user
-      $("#department").val("");
-      $("#photo").val("");
-      $("#partName").focus();
-  } 
-  
-  else {
-      alert("Please go back and check that all fields are completed");
-    
-  };
-  
-})
-</script>
+<script type="text/javascript" src="js/index.js"></script>
 </body>
 </html>

@@ -83,6 +83,21 @@ module.exports = function (app) {
       });
   });
 
+  app.get("/api/parts/mostrecentten", function (req, res) {
+    db.Parts.findAll({
+      order: [["id", "DESC"]],
+      limit: 10
+    })
+      .then(function (data) {
+        console.log(data)
+        res.json(data)
+
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  });
+
 
   // // Route for logging user out
    app.get("/logout", function(req, res) {
