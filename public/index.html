@@ -65,10 +65,28 @@
   </main>
   <!-- End of container -->
 
+ 
+
   <div id="main-container" class="container">
     <section class="main-section">
-      <h1>VW Parts Barn | Your hard-to-find-parts buddy <img src="assets/images/VW bus4.jpg" class="my-picture" alt="picture of VW bus"> </h1>
+      
+    <h1>VW Parts Barn | Your hard-to-find-parts buddy <img src="assets/images/VW bus4.jpg" class="my-picture" alt="picture of VW bus"> </h1>
+ <!-- Start of container for posters of trending parts for sale ---------------------------->
+ <main class="container">
+  <section class="row">
+    <div class="col-md-12" id="column1">
+      <article class="block">
+        <h1 class="block-header">Top 20 parts for sale</h1>
+        <hr />
+        
+        <!-- Placehold for trending parts and part name -->
+        <div id="trending-placehold"></div>  
 
+      </article>
+    </div>
+  </section>
+</main>
+<!-- End of container -->
       
       <div class="work">
          <a href= "Details.html">
@@ -159,7 +177,7 @@ console.log("getting part");
 
       var newPart = {
           partName: $("#partName").val().trim(),
-          photo: $("#photo").val().trim(),
+          photo: $("#photo").val().trim()
        
       }
 
