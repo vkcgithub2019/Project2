@@ -65,7 +65,7 @@ module.exports = function (app) {
 })
 
   app.post("/api/login",passport.authenticate("local"), function (req, res) {
-    console.log("User exists");
+    // console.log("User exists");
     res.json(req.body.email);
     })
  
@@ -74,7 +74,7 @@ module.exports = function (app) {
   app.get("/api/parts", function (req, res) {
     db.Parts.findAll({})
       .then(function (data) {
-        console.log(data)
+        // console.log(data)
         res.json(data)
 
       })
@@ -89,7 +89,7 @@ module.exports = function (app) {
       limit: 10
     })
       .then(function (data) {
-        console.log(data)
+        // console.log(data)
         res.json(data)
 
       })
@@ -133,8 +133,8 @@ module.exports = function (app) {
         id: req.params.id
       },
       /* include: [db.Post] */
-    }).then(function (dbAuthor) {
-      res.json(dbAuthor);
+    }).then(function (dbPart) {
+      res.json(dbPart);
     });
   });
 

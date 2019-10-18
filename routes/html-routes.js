@@ -82,6 +82,11 @@ app.get("/sellerInfo", isAuthenticated,function(req, res) {
     res.sendFile(path.join(__dirname, "../public/links.html"));
   });
 
+  app.get("/details/:id", function(req, res) {
+ 
+    res.sendFile(path.join(__dirname, "../public/details.html"))
+  });
+
   app.get("/logout", function(req, res) {
     req.logout();
     res.redirect("/");

@@ -31,85 +31,16 @@
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
       </li> --> 
     </ul>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-        <div class="work">
-                <a href= " ">
-                <img src="assets/images/steering wheel1.jpg" alt="picture 1.jpg"></a>
-       
-               <h3>photo 1</h3>
-             </div>
-             <div class="work">
-                 <a href= "     ">
-               <img src="assets/images/movie-reel.jpg" alt="picture 2.jpg"></a>
-       
-               <h3>photo 2</h3>
-             </div>
-             <div class="work">
-               <a href= "     ">
-               <img src="assets/images/panda-kick.jpg" alt="picture 3"></a>
-       
-               <h3>photo 3</h3>
-             </div>
-             <div class="work">
-                 <a href= "     ">
-               <img src="assets/images/crystals.jpg" height = 249px; alt="picture 4">
-       
-               <h3>photo 4</h3>
-             </div>
-             <div class="work">
-                 <a href= "     ">
-               <img src="assets/images/thomas-train.jpg" height = 249px; alt="picture 5">
-       
-               <h3>photo 5</h3>
-             </div>
-       
-             <div class="work">
-                 <a href= "      ">
-               <img src="assets/images/giftastic image.jpg" alt="picture 6">
-       
-               <h3>photo 6</h3>
-             </div>
-       
-               <div class="work">
-                 <a href= "https://documentcloud.adobe.com/link/track?uri=urn%3Aaaid%3Ascds%3AUS%3Afed250f9-dde5-4a34-8436-52b74e1cdee2">
-               <img src="assets/images/resume.png" alt="picture 7">
-       
-               <h3>photo 7</h3>
-             </div>
-         
-             <div class="work">
-               <a href= " https://vkcgithub2019.github.io/liri-node-app/">
-             <img src="assets/images/coding robot.jpg" height = 249px; alt="picture 8">
-       
-             <h3>photo 8/h3>
-             </div>
-       
-             <div class="work">
-               <a href= "https://github.com/vkcgithub2019/bamazon/blob/master/README.md">
-             <img src="assets/images/onlineShopping.jpg" height = 249px; alt="picture 9">
-            
-             <h3>photo 9</h3>
-             </div>
-       
-             <div class="work">
-               <a href= "https://protected-everglades-04089.herokuapp.com/">
-             <img src="assets/images/friendship.jpg" height = 249px; alt="picture 10">
-            
-             <h3>photo 10</h3>
-       
-             </div>
-       
-             <div class="work">
-               <a href= "https://secure-dusk-83951.herokuapp.com/">
-                 <!-- <a href ="https://github.com/vkcgithub2019/burger"> -->
-             <img src="assets/images/burger.jpg" height = 249px; alt="picture 11">
-            
-             <h3>photo 11</h3>
-       
-             </div>
-        </section>
-         </div>
-      
+    <script type='text/javascript'>
+
+      const partId = window.location.href.split('/').pop()
+      $.get('/api/parts/' + partId)
+        .then(function(data){
+          console.log(data)
+        })
+    </script>
     </body>
 </html>
 

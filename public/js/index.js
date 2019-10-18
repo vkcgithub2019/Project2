@@ -1,16 +1,27 @@
+
 //TODO: Setup ajax call that hits the /api/parts route and render the first 6 objects(parts) to the page
 $.get("/api/parts/mostrecentten",function(data){
     console.log(data);
 
     for (var i = 0; i < data.length; i++) {
         let img = data[i].photo;
-        let partImg = $("<img class='mostrecenttenparts'>");
+        let partImg = $(`<img class='part-image' data-id=${data[i].id}>`);
         partImg.attr("src", img);
         $("#most-recent-ten-parts").append(partImg);
+
     }
 
 
 });
+
+$(document).on('click', '.part-image', function(){
+
+  const partId = $(this).data('id')
+  window.location.replace('/details/' + partId)
+})
+
+
+
     
     
     $(function() {
