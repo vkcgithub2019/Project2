@@ -51,24 +51,39 @@ $(document).on('click', '.part-image', function(){
     
       if (formValidation() == true) {
     
-          var newPart = {
-              partName: $("#partName").val().trim(),
-              /* photo: $("#photo").val().trim() */
-           
-          }
-    
-          var currentURL = window.location.origin;
-    
+
+          var partName = $("#partName").val().trim()
+      
       //AJAX post the data to the parts route
-          $.get(currentURL + "/api/parts", newPart).done(function(bestMatch) { 
+          $.get("/api/parts/" + partName).done(function(bestMatch) { 
             /* $.get(currentURL + "/api/parts/" + newPart.partName).done(function(bestMatch) { */
               console.log(bestMatch);
-              for (var i = 0; i <= bestMatch.length, i ++;){
+              const {photo, partName, price, description } = bestMatch[0]
+              // for (var i = 0; i <= bestMatch.length, i ++;){
                 var newDiv = $("<div>") 
-                  newDiv.append(bestMatch.partName)
-                  newDiv.append(bestMatch.partCondition)
-                  $("#best-match-modal").append(newDiv)
-              }
+                  // newDiv.append(bestMatch.partName)
+                  // newDiv.append(bestMatch.partCondition)
+                  /**
+                   * UserId: null
+createdAt: "2019-10-17T22:12:46.000Z"
+department: "body"
+description: "1968 hub caps, 4 available, sold as a set"
+id: 16
+partCondition: "OEM"
+partName: "hub caps"
+phone: null
+photo: "https://www.justaircooled.co.uk/images/P/hubcap%20flat%20silver.JPG"
+price: 246
+updatedAt: "2019-10-17T22:12:46.000Z"
+                   */
+
+                   var image = $(`<img src=${photo}>`);
+                   var name = $('<h3>').text(partName);
+                   var descriptionP = $('<p>').text(description);
+                   var priceP = $('<p>').text(price)
+                  newDiv.append(name, image, descriptionP, priceP)
+                  $(".modal-body").append(newDiv)
+              // }
     
             
               /* $("#bestMatch-partName").html("<h2 style='font-size: 4em;'>" + bestMatch.partName + "</h2>");

@@ -1,3 +1,5 @@
+
+MVP
 Project 2 is a indiviualized project. I am creating a website for classic VW parts where users can locate parts through a network of parts sellers. 
 
 My website allows users to: 
@@ -19,8 +21,7 @@ Technologies used:
 - passport for login authentication
 - MVC paradigm and server-side API.
 - Used a Node and Express Web Server;
-- MySQL Database an ORM (not necessarily Sequelize);
-- Have both GET and POST routes for retrieving and adding new data;
-- Be deployed using Heroku (with Data);
-- Utilize at least one new library, package, or technology that we haven’t discussed;
+- MySQL Database an ORM 
+- api routes: GET and POST routes for retrieving and adding new data;
+- Heroku
 - used my own api, no third party API is utilized at this time. 
