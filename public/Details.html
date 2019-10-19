@@ -13,7 +13,8 @@
 
 <body>
     
-    <h1>You are currently viewing this part</h1>
+    <h1>Your current search result</h1>
+
 
     <!--Buy link-->
     <ul class="nav">
@@ -23,6 +24,18 @@
       <li class="nav-item">
         <a class="nav-link" href="index.html">New Search</a>
       </li>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <br>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li> --> 
+      </ul>
       <br>
       <!-- <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
@@ -39,6 +52,20 @@
       $.get('/api/parts/' + partId)
         .then(function(data){
           console.log(data)
+          // TODO: Render html for the part
+          for (var i = 0; i < data.length; i++) {
+        let img = data[i].photo;
+        let partImg = $(`<img class='part-image' data-id=${data[i].id}>`);
+        partImg.attr("src", img);
+        $("#most-recent-ten-parts").append(partImg);
+
+    }
+
+
+
+
+
+
         })
     </script>
     </body>
