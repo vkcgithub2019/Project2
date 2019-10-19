@@ -53,7 +53,7 @@ $(document).on('click', '.part-image', function(){
     
           var newPart = {
               partName: $("#partName").val().trim(),
-              photo: $("#photo").val().trim()
+              /* photo: $("#photo").val().trim() */
            
           }
     
