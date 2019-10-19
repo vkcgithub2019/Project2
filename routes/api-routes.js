@@ -54,15 +54,15 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/searchAllParts/:term", (req, res) => {
-    db.Parts.findAll({
-        // order: [['jobNumber', 'ASC']],
-        where: { partName: { [Op.like]: "%" + req.params.term + "%" }}
+//   app.get("/api/parts/:term", (req, res) => {
+//     db.Parts.findAll({
+//         // order: [['jobNumber', 'ASC']],
+//         where: { partName: { [Op.like]: "%" + req.params.term + "%" }}
         
-    }).then(data => {
-        res.json(data);
-    }) 
-})
+//     }).then(data => {
+//         res.json(data);
+//     }) 
+// })
 
   app.post("/api/login",passport.authenticate("local"), function (req, res) {
     // console.log("User exists");
@@ -71,8 +71,15 @@ module.exports = function (app) {
  
 
   //this one works
-  app.get("/api/parts", function (req, res) {
-    db.Parts.findAll({})
+  app.get("/api/parts/:partName", function (req, res) {
+    console.log(req.params)
+    db.Parts.findAll({
+
+      where: {
+        partName: req.params.partName.toLowerCase()
+      }
+
+    })
       .then(function (data) {
         // console.log(data)
         res.json(data)
