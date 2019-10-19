@@ -90,13 +90,10 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/parts/mostrecentten", function (req, res) {
-    db.Parts.findAll({
-      order: [["id", "DESC"]],
-      limit: 10
-    })
+  app.get("/api/parts", function (req, res) {
+    db.Parts.findAll({})
       .then(function (data) {
-        // console.log(data)
+        console.log('RESULTS: ', data)
         res.json(data)
 
       })

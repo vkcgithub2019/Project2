@@ -1,6 +1,6 @@
 
-//TODO: Setup ajax call that hits the /api/parts route and render the first 6 objects(parts) to the page
-$.get("/api/parts/mostrecentten",function(data){
+//TODO: Setup ajax call that hits the /api/parts route and render the first 10 objects(parts) to the page
+$.get("/api/parts", function(data){
     console.log(data);
 
     for (var i = 0; i < data.length; i++) {
