@@ -47,7 +47,13 @@ $(document).on('click', '.part-image', function(){
     
               return validForm;
          }
-          
+          function getItemDetail() {
+            var id = $(this).data("id")
+            /* $.get("/details/" + id).then(function(){
+
+            }) */
+            window.location = "/details/" + id
+          }
     
       if (formValidation() == true) {
     
@@ -58,11 +64,21 @@ $(document).on('click', '.part-image', function(){
           $.get("/api/parts/" + partName).done(function(bestMatch) { 
             /* $.get(currentURL + "/api/parts/" + newPart.partName).done(function(bestMatch) { */
               console.log(bestMatch);
-              const {photo, partName, price, description } = bestMatch[0]
-              // for (var i = 0; i <= bestMatch.length, i ++;){
+              
+              for (var i = 0; i < bestMatch.length; i++){
+                const {photo, partName, price, description } = bestMatch[i]
                 var newDiv = $("<div>") 
-                  // newDiv.append(bestMatch.partName)
-                  // newDiv.append(bestMatch.partCondition)
+                newDiv.data("id",bestMatch[i].id)
+                  newDiv.append(bestMatch[i].partName)
+                  newDiv.append(bestMatch[i].partCondition)
+                  var image = $(`<img src=${photo}>`);
+                   var name = $('<h3>').text(partName);
+                   var descriptionP = $('<p>').text(description);
+                   var priceP = $('<p>').text(price)
+                  newDiv.append(name, image, descriptionP, priceP)
+                  newDiv.on("click",getItemDetail)
+                  $(".modal-body").append(newDiv)
+              }   
                   /**
                    * UserId: null
 createdAt: "2019-10-17T22:12:46.000Z"
@@ -77,12 +93,7 @@ price: 246
 updatedAt: "2019-10-17T22:12:46.000Z"
                    */
 
-                   var image = $(`<img src=${photo}>`);
-                   var name = $('<h3>').text(partName);
-                   var descriptionP = $('<p>').text(description);
-                   var priceP = $('<p>').text(price)
-                  newDiv.append(name, image, descriptionP, priceP)
-                  $(".modal-body").append(newDiv)
+                   
               // }
     
             

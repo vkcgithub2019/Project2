@@ -134,7 +134,8 @@ module.exports = function (app) {
     // In this case, just db.Post
     db.Parts.findOne({
       where: {
-        id: req.params.id
+       /*  id: req.params.id */
+       id:1
       },
       /* include: [db.Post] */
     }).then(function (dbPart) {
