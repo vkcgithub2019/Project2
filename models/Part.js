@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
     Part.associate = function(models) {
       // Associating parts with user
       // When a part is deleted, also delete any associated user
-      Part.belongsTo(models.User, {
+      Part.belongsTo(models.Users, {
         // onDelete: "cascade"
       });
     };

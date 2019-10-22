@@ -33,7 +33,7 @@ $(document).ready(function() {
         // If there's an error, log the error
       })
       .catch(function(err) {
-        console.log(err)
+        // console.log(err)
         $("#alertDiv").css("display","block");
         setTimeout(function(){ location.reload(); },1500);
       });
