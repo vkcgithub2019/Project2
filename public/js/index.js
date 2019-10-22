@@ -1,7 +1,7 @@
 
 //TODO: Setup ajax call that hits the /api/parts route and render the first 10 objects(parts) to the page
 $.get("/api/parts", function(data){
-    console.log(data);
+    // console.log(data);
 
     for (var i = 0; i < data.length; i++) {
         let img = data[i].photo;
@@ -30,7 +30,7 @@ $(document).on('click', '.part-image', function(){
     
     $("#submit").on("click", function(e) {
       e.preventDefault();
-    console.log("getting part");
+    // console.log("getting part");
       function formValidation() {
           var validForm = true;
           $(".form-control").each(function() {
@@ -63,7 +63,7 @@ $(document).on('click', '.part-image', function(){
       //AJAX post the data to the parts route
           $.get("/api/parts/" + partName).done(function(bestMatch) { 
             /* $.get(currentURL + "/api/parts/" + newPart.partName).done(function(bestMatch) { */
-              console.log(bestMatch);
+              // console.log(bestMatch);
               
               for (var i = 0; i < bestMatch.length; i++){
                 const {photo, partName, price, description } = bestMatch[i]

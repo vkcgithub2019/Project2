@@ -18,7 +18,7 @@ function submitForm(){
         photo: $("#photo").val()
     }
    
-    console.log('submitFormData', submitFormData)
+    // console.log('submitFormData', submitFormData)
 
 //do an ajax call here in (), .get
 $.ajax({
@@ -27,7 +27,7 @@ $.ajax({
     data: submitFormData
   })
     .then(function(addPartsDataReponse) {
-      console.log('addPartsDataReponse', addPartsDataReponse)
+      // console.log('addPartsDataReponse', addPartsDataReponse)
         $("#name").val("");
         $("#email").val("");
         $("phone").val("");
