@@ -7,19 +7,19 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
 //middleware
 
-app.get("/", isAuthenticated,function(req, res) {
+app.get("/",function(req, res) {
   // If the user already has an account send them to the members page
-  if (req.user) {
-    /* res.redirect("/members"); */
-  }
+  // if (req.user) {
+  //   /* res.redirect("/members"); */
+  // }
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 app.get("/sellerInfo", isAuthenticated,function(req, res) {
   // If the user already has an account send them to the sellerInfo page
-  if (req.user) {
-    /* res.redirect("/members"); */
-  }
+  // if (req.user) {
+  //   /* res.redirect("/members"); */
+  // }
   res.sendFile(path.join(__dirname, "../public/sellerInfo.html"));
 });
 

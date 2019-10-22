@@ -3,6 +3,8 @@ var sequelize = require("sequelize");
 var db = require("../models");
 var passport = require("../config/passport");
 var Op = sequelize.Op;
+var isAuthenticated = require("../plugin/isAuthenticated");
+
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -28,12 +30,12 @@ module.exports = function (app) {
       photo: req.body.photo
     })
       .then(function (data) {
-        console.log(data)
+        // console.log(data)
         res.json(data)
 
       })
       .catch(function (err) {
-        console.log(err);
+        // console.log(err);
         res.send(err)
       });
   }); 
@@ -45,7 +47,7 @@ module.exports = function (app) {
 
     })
       .then(function (data) {
-        console.log(data)
+        // console.log(data)
         res.json(data)
 
       })
