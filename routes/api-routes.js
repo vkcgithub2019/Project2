@@ -3,7 +3,7 @@ var sequelize = require("sequelize");
 var db = require("../models");
 var passport = require("../config/passport");
 var Op = sequelize.Op;
-var isAuthenticated = require("../plugin/isAuthenticated");
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 
 module.exports = function (app) {
