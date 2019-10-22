@@ -74,7 +74,7 @@ module.exports = function (app) {
 
   //this one works
   app.get("/api/parts/:partName", function (req, res) {
-    console.log(req.params)
+    // console.log(req.params)
     db.Parts.findAll({
 
       where: {
@@ -95,7 +95,7 @@ module.exports = function (app) {
   app.get("/api/parts", function (req, res) {
     db.Parts.findAll({})
       .then(function (data) {
-        console.log('RESULTS: ', data)
+        // console.log('RESULTS: ', data)
         res.json(data)
 
       })

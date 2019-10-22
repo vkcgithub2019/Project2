@@ -1,9 +1,8 @@
 // Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
+var mySqlStore = require("express-mysql-store");
 require("dotenv").config();
-// Requiring passport as we've configured it
-// var passport = require("./config/passport");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
 
@@ -16,7 +15,31 @@ var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+
+var sqlStore;
+if (process.env.NODE_ENV === "production") {
+  sqlStore = new mySqlStore({
+    user: process.env.JAWSDB_USER,
+    password: process.env.JAWSDB_PWD,
+    database: process.env.JAWSDB_DB,
+    host: process.env.JAWSDB_HOST,
+    port: process.env.JAWSDB_PORT
+  })
+} else {
+  sqlStore = new mySqlStore({
+    user: "root",
+    password: "",
+    database: "classicPart",
+    host: "127.0.0.1",
+    port: 3306
+  })
+}
+app.use(session({
+  secret: "keyboard cat",
+  resave: true,
+  saveUninitialized: true,
+  store: sqlStore
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
