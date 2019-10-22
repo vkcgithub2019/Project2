@@ -138,6 +138,15 @@ h3, h2 {
   min-height: calc(100vh - 70px);
 }
 
+.container {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  clear: both;
+}
+
+
+
 .main-section {
   float: left;
   width: 100%;
@@ -247,7 +256,16 @@ input[type=submit] {
  
   #container {
     width:100%;
+    text-align: center;
+    position:fixed;
   }
+  .container {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    clear: both;
+  }
+
 }
 
   #left-column {
@@ -343,3 +361,21 @@ img {
   border-bottom: 0;
 }
 
+/* footer */
+
+.footer {
+  background: #666666;
+  color: #fff;
+  padding: 0;
+  clear: both;
+/*  border-top: 8px solid #4aaaa5; */
+  color: #cccccc;
+  font-size: 12px;
+  text-align: center;
+  position:fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  margin: auto;
+  
+}
