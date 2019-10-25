@@ -16,24 +16,24 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-var sqlStore;
-if (process.env.NODE_ENV === "production") {
-  sqlStore = new mySqlStore({
-    user: process.env.JAWSDB_USER,
-    password: process.env.JAWSDB_PWD,
-    database: process.env.JAWSDB_DB,
-    host: process.env.JAWSDB_HOST,
-    port: process.env.JAWSDB_PORT
-  })
-} else {
-  sqlStore = new mySqlStore({
-    user: "root",
-    password: "",
-    database: "classicPart",
-    host: "127.0.0.1",
-    port: 3306
-  })
-}
+// var sqlStore;
+// if (process.env.NODE_ENV === "production") {
+//   sqlStore = new mySqlStore({
+//     user: process.env.JAWSDB_USER,
+//     password: process.env.JAWSDB_PWD,
+//     database: process.env.JAWSDB_DB,
+//     host: process.env.JAWSDB_HOST,
+//     port: process.env.JAWSDB_PORT
+//   })
+// } else {
+//   sqlStore = new mySqlStore({
+//     user: "root",
+//     password: "",
+//     database: "classicPart",
+//     host: "127.0.0.1",
+//     port: 3306
+//   })
+// }
 app.use(session({
   secret: "keyboard cat",
   resave: true,
@@ -53,4 +53,6 @@ db.sequelize.sync({force:false}).then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT);
   });
-});
+}).catch(function(err){
+  console.log("DB CONNECTION ERR: ", err)
+})
