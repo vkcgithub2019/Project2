@@ -1,7 +1,7 @@
 // Requiring necessary npm packages
 var express = require("express");
 var session = require("express-session");
-var mySqlStore = require("express-mysql-session");
+// var mySqlStore = require("express-mysql-session");
 require("dotenv").config();
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
@@ -38,7 +38,7 @@ app.use(session({
   secret: "keyboard cat",
   resave: true,
   saveUninitialized: true,
-  store: sqlStore
+  // store: sqlStore
 }));
 app.use(passport.initialize());
 app.use(passport.session());
