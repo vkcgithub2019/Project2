@@ -14,6 +14,7 @@ var db = require("./models");
 var app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 app.use(express.static("public"));
 
 // var sqlStore;
@@ -34,6 +35,7 @@ app.use(express.static("public"));
 //     port: 3306
 //   })
 // }
+
 app.use(session({
   secret: "keyboard cat",
   resave: true,

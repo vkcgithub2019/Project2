@@ -18,7 +18,7 @@ module.exports = function (app) {
   // // how we configured our Sequelize User Model. If the user is created successfully, proceed to log the user in,
   // // otherwise send back an error
 
-  //FIXME: doesn't take in req.body (Trae fixed this by changing req.body to actual object after line 19)
+  // Taking in req.body (Trae fixed this by changing req.body to actual object after line 19)
   app.post("/api/addParts", function (req, res) {
     db.Parts.create({
       partName: req.body.partName,
