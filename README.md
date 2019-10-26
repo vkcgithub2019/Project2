@@ -21,6 +21,8 @@ There are 3 routes: api-routes.js, Authentication-routes.js, and html-routes.js.
 
 
 
+
+
 Technologies used: 
 - sequelize
 - node express
