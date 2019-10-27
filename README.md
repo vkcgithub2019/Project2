@@ -31,6 +31,8 @@ Technologies used in the construction of this website
 -   MVC paradigm: Model, View, Controller structure is used. For the database side, the Models consists of the      
     index.js, parts.js and users.js files. The index.js file setup ajax call that hits the /api/parts route and render the available objects(parts) to the page. The part.js file involves creating the sequalize database of various fields. The user.js deals with the user information such as email and passwords.
 
+-   .gitignore folder has files such as .env, node modules, and archives which contains all the sensitive                  information that will not be revealed in Github, such as password.
+
 Here is the link to the deployed site in Heroku:  https://mighty-badlands-39967.herokuapp.com
 
 Here is the link to the deployed site in Github: https://github.com/vkcgithub2019/classicParts
