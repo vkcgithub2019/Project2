@@ -130,17 +130,19 @@ module.exports = function (app) {
 
 
   // this one works
-  app.get("/api/parts/:id", function (req, res) {
+  app.get("/api/parts/id/:id", function (req, res) {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Post
+   
     db.Parts.findOne({
       where: {
-       /*  id: req.params.id */
-       id:1
+        id: req.params.id
+      
       },
       /* include: [db.Post] */
     }).then(function (dbPart) {
+   
       res.json(dbPart);
     });
   });

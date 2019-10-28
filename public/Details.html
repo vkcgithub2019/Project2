@@ -30,6 +30,10 @@
           <a class="nav-link" href="index.html">Home</a>
         </li>
         <br>
+        <div id = "detail-info"></div>
+        <div>
+          <label>phone-number: </label><span id = "phone-number"></span>
+        </div>
         <!-- <li class="nav-item">
           <a class="nav-link" href="#">Link</a>
         </li>
@@ -50,17 +54,18 @@
     <script type='text/javascript'>
 
       const partId = window.location.href.split('/').pop()
-      $.get('/api/parts/' + partId)
+      $.get('/api/parts/id/' + partId)
         .then(function(data){
           // console.log(data)
           // TODO: Render html for the part
-          for (var i = 0; i < data.length; i++) {
-        let img = data[i].photo;
-        let partImg = $(`<img class='part-image' data-id=${data[i].id}>`);
+          /* for (var i = 0; i < data.length; i++) { */
+        let img = data.photo;
+        let partImg = $(`<img class='part-image' data-id=${data.id}>`);
         partImg.attr("src", img);
-        $("#most-recent-ten-parts").append(partImg);
-
-    }
+        $("#detail-info").append(partImg);
+phoneNumber = data.phone
+$("#phone-number").append(phoneNumber);
+   /*  } */
 
         })
     </script>

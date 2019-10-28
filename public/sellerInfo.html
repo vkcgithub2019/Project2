@@ -50,7 +50,26 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="js/members.js"></script>
+<script type = "text/javascript">
 
+$.get('/api/parts/id/' + partId)
+        .then(function(data){
+          // console.log(data)
+          // TODO: Render html for the part
+          /* for (var i = 0; i < data.length; i++) { */
+        let img = data.photo;
+        let partImg = $(`<img class='part-image' data-id=${data.id}>`);
+        partImg.attr("src", img);
+        $("#detail-info").append(partImg);
+phoneNumber = data.phone
+$("#phone-number").append(phoneNumber);
+   /*  } */
+
+        })
+
+
+
+</script>
 </body>
 
 </html>

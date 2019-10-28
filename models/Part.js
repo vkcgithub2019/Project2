@@ -5,7 +5,7 @@ module.exports = function(sequelize, DataTypes) {
       partCondition: DataTypes.STRING,
       price: DataTypes.INTEGER,  
       description: DataTypes.STRING,
-      phone: DataTypes.INTEGER,  
+      phone: DataTypes.STRING,  
       photo: DataTypes.STRING
       // TODO: Add column for picture and set it to a STRING datatype
     });
