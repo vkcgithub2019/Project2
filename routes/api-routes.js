@@ -41,20 +41,31 @@ module.exports = function (app) {
   }); 
   
   app.post("/api/addUser", function (req, res) {
-    db.User.create({
+    db.Users.create({
       email: req.body.email,
       password: req.body.password,
 
     })
-      .then(function (data) {
+      /* .then(function (data) {
         // console.log(data)
         res.json(data)
+ */
+        .then(function(){
+          res.redirect("/api/login");
+                      
+        })
+        .catch(function(err){
+          res.status(401).send(err.errors[0].message);
+        });
 
-      })
-      .catch(function (err) {
-        console.log(err);
+
+
       });
-  });
+      /* .catch(function (err) {
+        console.log(err);
+      }); */
+/* 
+ */
 
 //   app.get("/api/parts/:term", (req, res) => {
 //     db.Parts.findAll({
@@ -68,8 +79,9 @@ module.exports = function (app) {
 
   app.post("/api/login",passport.authenticate("local"), function (req, res) {
     // console.log("User exists");
-    res.json(req.body.email);
-    })
+    /* res.json(req.body.email); */
+    res.json(req.user);
+    });
  
 
   //this one works

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Passport Authentication</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/lumen/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">
+        Logout
+      </a>
+    </div>
+
+    <div class="navbar-header">
+            <a class="navbar-brand" href="index.html">
+             Home
+                </a>
+    </div>
+
+
+  </div>
+
+</nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+                <h2>Welcome! Please contact the seller directly to buy the parts. <span class="member-name"></span></h2>
+                <p>Please beware of scams. Know your buyer first before doing any transactions. Do not send payment via Western Union nor accept payment in the form of cashier check or personal check. Conduct your transaction in a safe manner and in a safe place.</p>
+
+                <p>You are buying the following parts: href ="  "</p>
+                <p>Here is the seller's information.</p>
+                
+                <ul>
+                  
+                    <li>Seller's Name:</li>
+                    <li>Seller's Email:</li>
+                    <li>Seller's Phone:</li>
+                   
+                </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/members.js"></script>
+<script type = "text/javascript"> 
+
+$.get('/api/parts/id/' + partId)
+        .then(function(data){
+          // console.log(data)
+          // TODO: Render html for the part
+          /* for (var i = 0; i < data.length; i++) { */
+        let img = data.photo;
+        let partImg = $(`<img class='part-image' data-id=${data.id}>`);
+        partImg.attr("src", img);
+        $("#detail-info").append(partImg);
+phoneNumber = data.phone
+$("#phone-number").append(phoneNumber);
+   /*  } */
+
+        })
+
+
+
+</script>
+</body>
+
+</html>
