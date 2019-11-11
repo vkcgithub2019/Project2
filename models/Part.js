@@ -12,18 +12,13 @@ module.exports = function(sequelize, DataTypes) {
     
     // when a user is deleted, also delete any associated parts
 
-
-
-
     //don't want to delete user if one part is deleted because the same user may also 
     //have other parts listed for sale
 
-    
-  
     Part.associate = function(models) {
       // Associating parts with user
       // When a part is deleted, also delete any associated user
-      Part.belongsTo(models.Users, {
+      Part.belongsTo(models.User, {
         // onDelete: "cascade"
       });
     };
