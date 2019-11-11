@@ -20,7 +20,7 @@ USE classicPart; */
 --   PRIMARY KEY (id)
 -- );
 
-/* CREATE DATABASE userId;
+CREATE DATABASE userId;
 USE userId;
 
 CREATE TABLE Users (
@@ -29,4 +29,4 @@ CREATE TABLE Users (
   Email VARCHAR(100) NOT NULL,
   password VARCHAR(150),
   PRIMARY KEY(id)
-); */
+); 
