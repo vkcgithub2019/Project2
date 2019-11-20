@@ -36,9 +36,15 @@ $(document).ready(function() {
         // If there's an error, log the error
       })
       .catch(function(err) {
-        // console.log(err)
+        console.log(err)
+        if (err.status === 200){
+          
+          
+          return window.open("/members","_self");
+        }
+
         $("#alertDiv").css("display","block");
-        setTimeout(function(){ location.reload(); },1500);
+        /* setTimeout(function(){ location.reload(); },1500); */
       });
   }
 });
