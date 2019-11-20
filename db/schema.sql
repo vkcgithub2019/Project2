@@ -23,7 +23,7 @@ USE classicPart; */
 CREATE DATABASE userId;
 USE userId;
 
-CREATE TABLE Users (
+CREATE TABLE users (
 
   id INT NOT NULL AUTO_INCREMENT,
   Email VARCHAR(100) NOT NULL,

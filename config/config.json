@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "",
-    "database": "classicPart",
+    "database": "classicParts",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
@@ -15,10 +15,10 @@
   },
   "production": {
     "use_env_variable": "JAWSDB_URL",
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "iafl0x14eulxunv2",
+    "password": "xf3sam5cw8k2joch",
+    "database": "m45c5hxf1i4kiuas",
+    "host": "u0zbt18wwjva9e0v.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
