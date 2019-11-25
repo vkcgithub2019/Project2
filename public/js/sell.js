@@ -1,6 +1,4 @@
 
-
-
 $(document).on("click", "#submitButton", submitForm);
 function submitForm(){
     event.preventDefault()
